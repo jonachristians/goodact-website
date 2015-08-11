@@ -5,10 +5,11 @@
   </div>
   <h2>Offers</h2>
   <% @user.offers.each do |offer| %>
-  <p><%= offer.description %></p>
+  <p><%= offer.description %> <%= link_to "Link", offer %></p>
+
   <%end%>
   <h2>Searches</h2>
   <% @user.searches.each do |search| %>
-  <p><%= search.description %></p>
+  <p><%= search.description %> </p>
   <%end%>
 </div>

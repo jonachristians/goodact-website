@@ -1,0 +1,17 @@
+<h1>Offers</h1>
+<div class="container">
+  <div class="row">
+    <% @offers.each do |offer| %>
+      <div class="col-xs-3">
+        <%= link_to(offer) do %>
+          <div class="thumbnail">
+            <p><%= offer.description %></p>
+            <p>
+              Offered by <%= offer.user.name%>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
