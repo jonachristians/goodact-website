@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(signup_params)
+    @user.image = "/maya/panama.jpg"
     if @user.save
-      redirect_to user_path #does this work???
+      redirect_to user_path(@user) #does this work???
     else
       render 'new'
     end
