@@ -1,2 +1,15 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<div class="container">
+  <h1><%= @user.name %></h1>
+  <img src="<%= @user.image %>"/>
+  <h2>Offers</h2>
+  <% user.offers.each do |offer| %>
+  <p><%= offer.description %></p>
+  <%end%>
+  <h2>Searches</h2>
+  <% user.searches.each do |search| %>
+  <p><%= search.description %></p>
+  <%end%>
+</div>
