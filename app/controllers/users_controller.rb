@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       redirect_to user_path #does this work???
     else
       render 'new'
+    end
   end
 
 
