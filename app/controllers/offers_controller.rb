@@ -1,13 +1,17 @@
 class OffersController < ApplicationController
 
   def index
-    @offers = Offer.all
+    @offers = User.find(params[:user_id]).offers
+    @user = User.find(params[:user_id])
   end
 
   def show
     @offer = Offer.find(params[:id])
   end
 
+  def show_all
+    @offers = Offer.all
+  end
   def new
     @offer = Offer.new
   end

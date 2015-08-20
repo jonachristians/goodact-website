@@ -1,11 +1,11 @@
 <div class="container">
   <h1><%= @user.name %></h1>
   <div class="thumbnail">
-    <img src="<%= @user.image %>"/>
+    <%= image_tag @user.image %>
   </div>
   <h2>Offers</h2>
   <% @user.offers.each do |offer| %>
-  <p><%= offer.description %> <%= link_to "Link", offer %></p>
+  <p><%= offer.description %> <%= link_to "Link", user_offer_path(offer.user, offer) %></p>
 
   <%end%>
   <h2>Searches</h2>

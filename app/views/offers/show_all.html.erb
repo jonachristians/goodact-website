@@ -1,21 +1,16 @@
-<h3>Offers of <%= @user.name %></h3>
 <div class="container">
   <div class="row">
-    <% if @offers.empty? then%>
-    <p>
-      Corrently has no offers
-    </p>
-    <%end%>
-
     <% @offers.each do |offer| %>
       <div class="col-sm-3">
-        <%= link_to user_offer_path(offer, offer.user) do %>
+        <%= link_to user_offer_path(offer.user, offer) do %>
           <div class="thumbnail">
             <p><%= offer.description %></p>
+            <p>
+              Offered by <%= offer.user.name%>
+            </p>
           </div>
-          <% end %>
+        <% end %>
       </div>
     <% end %>
-
   </div>
 </div>

@@ -1,20 +1,28 @@
 <h1 class="user-heading">Users</h1>
 <div class="container">
-  <div class="row">
+
+  <div class="show_users">
+    <div class="row">
     <% @users.each do |user| %>
-      <div class="col-xs-3">
-        <%= link_to(user) do %>
+
+      <div class="col-sm-3">
         <div class="thumbnail">
-
-
-          <p><%= user.name %>  </p>
-          <img src="<%= user.image %>" />
+          <%= link_to(user) do %>
+            <p><%= user.name %>  </p>
+            <%= image_tag user.image %>
+          <% end %>
+          <div class="offers_link">
+            <%= link_to "Offers", user_offers_path(user)%>
+          </div>
+          <div class="searches_link">
+            <%= link_to "Searches" %>
+          </div>
         </div>
-        <% end %>
       </div>
     <%end%>
   </div>
   <br>
   <h3>Join</h3>
   <a href="/users/new">Create new account</a>
+  </div>
 </div>
