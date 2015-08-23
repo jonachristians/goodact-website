@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(signup_params)
-    @user.image = "/maya/panama.jpg"
+    @user.image = "maya/#{rand(1..15)}.jpg"
     if @user.save
       redirect_to user_path(@user) #does this work???
     else
