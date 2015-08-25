@@ -9,22 +9,20 @@
 <body>
   <div class="header">
     <div class="nav">
-
-
       <div class="container">
-
-
-
-          <ul class="nav-pills">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Zome</a></li>
-          </ul>
-
+        <ul class="pull-left">
+          <li><%= link_to "Home", root_path %></li>
+          <li><a href="#">Browse</a></li>
+        </ul>
+        <ul class="pull-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
       </div>
-
     </div>
   </div>
-<%= link_to "Home", root_path %>
+
 <%= yield %>
 
 </body>
