@@ -1,8 +1,21 @@
 <div class="container">
-  <h1>Offer</h1>
-  <br>
-  <p>
-    <%= @offer.description %>
-  </p>
-  <p>Show profile <%= link_to @offer.user.name, @offer.user %></p>
+  <ul class="nav nav-tabs">
+    <li class=""><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Sign up", new_user_path%></li>
+    <li><a href="#">Log In</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <%= image_tag "geo/1.jpg", class: "col-md-6"%>
+      <div class="col-md-6">
+        <p>
+          <%= @offer.description %>
+        </p>
+         <%= link_to @offer.user.name, @offer.user, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,17 +1,27 @@
 <div class="container">
+  <ul class="nav nav-tabs">
+    <li class=""><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Sign up", new_user_path%></li>
+    <li><a href="#">Log In</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</div>
+
+<div class="container">
   <h1><%= @user.name %></h1>
   <div class="thumbnail">
-    <img src="<%= @user.image %>"/>
+    <%= image_tag @user.image %>
   </div>
-  <h2>Offers</h2>
-  <% @user.offers.each do |offer| %>
-  <p><%= offer.description %> <%= link_to "Link", offer %></p>
-
-  <%end%>
-
-  <h2>Searches</h2>
-  <% @user.searches.each do |search| %>
-  <p><%= search.description %> </p>
-  <%end%>
-
+  <div class="col-md-6">
+    <h2>Offers</h2>
+    <% @user.offers.each do |offer| %>
+    <p><%= offer.description %> <%= link_to "Show", offer , class: "btn"%></p>
+    <%end%>
+  </div>
+  <div class="col-md-6">
+    <h2>Searches</h2>
+    <% @user.searches.each do |search| %>
+    <p><%= search.description %> </p>
+    <%end%>
+  </div>
 </div>
