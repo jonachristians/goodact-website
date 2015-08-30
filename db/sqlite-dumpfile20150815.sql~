@@ -23,8 +23,5 @@ INSERT INTO "offers" VALUES(3,'I have two tickets for Madonna',2,'2015-08-11 18:
 INSERT INTO "offers" VALUES(4,'Hello I offer random',1,'2015-08-23 10:34:44.960409','2015-08-23 22:50:14.212374','geo/1.jpg');
 INSERT INTO "offers" VALUES(9,'Helesana wikonaka',1,'2015-08-23 10:46:01.216474','2015-08-23 22:50:27.780502','geo/6.jpg');
 DELETE FROM sqlite_sequence;
-INSERT INTO "sqlite_sequence" VALUES('users',14);
-INSERT INTO "sqlite_sequence" VALUES('offers',9);
-INSERT INTO "sqlite_sequence" VALUES('searches',2);
 CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version");
 COMMIT;
