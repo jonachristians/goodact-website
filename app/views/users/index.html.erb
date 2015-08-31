@@ -1,13 +1,10 @@
 <h1 class="user-heading">Users</h1>
 <div class="container">
-
-  <div class="show_users">
-    <div class="row">
+  <div class="row">
     <% @users.each do |user| %>
-
-      <div class="col-sm-3">
-        <div class="thumbnail">
-          <%= link_to(user) do %>
+      <div class="col-xs-3">
+        <%= link_to(user) do %>
+        <div class="thumbnail user">
             <p><%= user.name %>  </p>
             <%= image_tag user.image %>
           <% end %>

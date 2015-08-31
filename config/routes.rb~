@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  resources :users do
+    resources :offers
+    resources :searches
+  end
+  root 'offers#show_all' #should later point to offers
+=======
   resources :users
   resources :offers
   root 'offers#index' #should later point to offers
+>>>>>>> focusOnOffers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
