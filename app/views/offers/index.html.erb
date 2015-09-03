@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <ul class="nav nav-tabs">
     <li class="active"><%= link_to "Home", root_path %></li>
@@ -10,12 +12,6 @@
 <div class="container">
   <h2 class="offer-heading">Offers</h2>
   <div class="row">
-    <% if @offers.empty? then%>
-    <p>
-      Corrently has no offers
-    </p>
-    <%end%>
-
     <% @offers.each do |offer| %>
       <div class="col-xs-3">
         <%= link_to(offer) do %>
@@ -26,9 +22,10 @@
               Offered by <%= offer.user.name%>
             </p>
           </div>
-          <% end %>
+        <% end %>
       </div>
     <% end %>
-
   </div>
 </div>
+
+<img src="maya/1.jpg" alt="" />
