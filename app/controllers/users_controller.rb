@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(signup_params)
     @user.image = "maya/#{rand(1..15)}.jpg"
     if @user.save
-      redirect_to @user #does this work???
+      session[:user_id] = @user.id
+      redirect_to '/' #does this work???
     else
       render 'new'
     end
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
 
   private
   def signup_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 
 end

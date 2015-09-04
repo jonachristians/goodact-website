@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :offers
+  get 'signup' => 'user#new'
   root 'offers#index' #should later point to offers
 
   # The priority is based upon order of creation: first created -> highest priority.
