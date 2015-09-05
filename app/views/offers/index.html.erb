@@ -1,15 +1,6 @@
 
 
 <div class="container">
-  <ul class="nav nav-tabs">
-    <li class="active"><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
-
-<div class="container">
   <h2 class="offer-heading">Offers</h2>
   <div class="row">
     <% @offers.each do |offer| %>
@@ -17,9 +8,9 @@
         <%= link_to(offer) do %>
           <div class="thumbnail offer">
             <p><%= offer.description %></p>
-            <img src="<%= offer.image%>" alt="" />
+            <img src="<%= offer.image%>" class="img-responsive" style="max-height:180px" alt="" />
             <p>
-              Offered by <%= offer.user.name%>
+              Offered by <%= offer.user.first_name%>
             </p>
           </div>
         <% end %>

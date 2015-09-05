@@ -1,15 +1,14 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li><%= link_to "Home", root_path %></li>
-    <li class="active"> <%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
 
-<div class="container">
-  <%= form_for (@user) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "Join", class: "btn btn-default  " %>
+
+<div class="signup">
+  <div class="container">
+
+    <%= form_for(@user) do |f| %>
+    <%= f.text_field :first_name, :placeholder => "First name" %>
+    <%= f.text_field :last_name, :placeholder => "Last name" %>
+    <%= f.email_field :email, :placeholder => "Email" %>
+    <%= f.password_field :password, :placeholder => "Password" %>
+    <%= f.submit "Create an account", class: "btn-submit" %>
   <% end %>
+  </div>
 </div>

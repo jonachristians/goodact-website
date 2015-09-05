@@ -1,0 +1,1 @@
+The line helper_method :current_user makes current_user method available in the views. By default, all methods defined in Application Controller are already available in the controllers. 

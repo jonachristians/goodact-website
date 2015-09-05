@@ -1,11 +1,4 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class=""><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
+
 <div class="jumbotron">
   <div class="container">
     <div class="row">
@@ -14,7 +7,19 @@
         <p>
           <%= @offer.description %>
         </p>
-         <%= link_to @offer.user.name, @offer.user, class: "btn btn-primary" %>
+         <%= link_to @offer.user.first_name, @offer.user, class: "btn btn-primary" %>
+
+         <% if current_user && (current_user.admin? || current_user.editor?) %>
+          <p class="offer-edit">
+            <%= link_to "Edit", edit_offer_path(@offer.id) %>
+          </p>
+        <% end %>
+
+        <% if current_user && current_user.admin? %>
+          <p class="offer-delete">
+            <%= link_to "Delete", offer_path(@offer), method: "delete" %></p>
+        <% end %>
+
       </div>
     </div>
   </div>

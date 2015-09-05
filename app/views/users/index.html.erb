@@ -1,18 +1,11 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li class=""><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
+
 <div class="container">
   <div class="row">
     <% @users.each do |user| %>
       <div class="col-xs-3">
         <%= link_to(user) do %>
         <div class="thumbnail user">
-            <p><%= user.name %>  </p>
+            <p><%= user.first_name %>  </p>
             <%= image_tag user.image %>
           <% end %>
         </div>

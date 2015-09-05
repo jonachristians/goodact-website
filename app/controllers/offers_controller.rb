@@ -1,5 +1,7 @@
 class OffersController < ApplicationController
-
+before_action :require_user, only: [:show]
+before_action :require_editor, only: [:edit]
+before_action :require_admin, only: [:destroy]
   def index
     @offers = Offer.all
   end
@@ -13,7 +15,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new(signup_params)
+    @offer = Offer.new(offer_params)
     @offer.image = "geo/#{rand(1..15)}.jpg"
     @offer.user_id = 1
     if @offer.save
@@ -23,8 +25,27 @@ class OffersController < ApplicationController
     end
   end
 
+  def edit
+    @offer = Offer.find(params[:id])
+  end
+
+  def update
+    @offer = Offer.find(params[:id])
+    if @offer.update(offer_params)
+      redirect_to @offer
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to root_url
+  end
+
   private
-  def signup_params
+  def offer_params
     params.require(:offer).permit(:description)
   end
 
