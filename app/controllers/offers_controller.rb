@@ -49,9 +49,6 @@ before_action :require_admin, only: [:destroy]
     params.require(:offer).permit(:description)
   end
 
-  def random_picture
-    random_number = rand(1..15)
-    @picture = File.read("geo/#{random_number}.jpg")
-  end
+
 
 end
