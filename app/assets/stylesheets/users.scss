@@ -14,3 +14,12 @@
 .searches_link {
   float: right;
 }
+body { padding-top: 70px; }
+
+.navbar {
+  border-bottom: solid 1px grey;
+  background-color: white;
+}
+.navbar-transparent .navbar-toggle .icon-bar {
+    background-color: black;
+}
