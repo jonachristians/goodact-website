@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
-before_action :require_user, only: [:show]
-before_action :require_editor, only: [:edit]
+before_action :require_user, except: [:index]
+# before_action :require_editor, only: [:edit] <-- was used with the role model
 before_action :require_admin, only: [:destroy]
   def index
     @offers = Offer.all
@@ -17,7 +17,8 @@ before_action :require_admin, only: [:destroy]
   def create
     @offer = Offer.new(offer_params)
     @offer.image = "geo/#{rand(1..15)}.jpg"
-    @offer.user_id = 1
+    @offer.user_id = current_user.id if current_user
+    # or: @offer = current_user.offers.new(offer_params)
     if @offer.save
       redirect_to offer_path(@offer)
     else
