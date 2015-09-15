@@ -20,7 +20,7 @@ before_action :require_admin, only: [:destroy]
     @offer.user_id = current_user.id if current_user
     # or: @offer = current_user.offers.new(offer_params)
     if @offer.save
-      redirect_to offer_path(@offer)
+      redirect_to @offer
     else
       render 'new'
     end
@@ -28,21 +28,37 @@ before_action :require_admin, only: [:destroy]
 
   def edit
     @offer = Offer.find(params[:id])
+    if is_owner?
+      render 'edit'
+    else
+      render 'show'
+      # some notice
+    end
   end
 
   def update
     @offer = Offer.find(params[:id])
-    if @offer.update(offer_params)
-      redirect_to @offer
+    if is_owner?
+      if @offer.update(offer_params)
+        redirect_to @offer
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      #some notice
+      render 'show'
     end
   end
 
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
-    redirect_to root_url
+    user = @offer.user
+    if is_owner?
+      @offer.destroy
+      redirect_to user
+    else
+      render 'show'
+    end
   end
 
   private
@@ -50,6 +66,8 @@ before_action :require_admin, only: [:destroy]
     params.require(:offer).permit(:description)
   end
 
-
+  def is_owner?
+    @offer.user_id == current_user.id if current_user
+  end
 
 end
