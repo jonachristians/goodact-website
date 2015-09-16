@@ -6,9 +6,9 @@
       <div class="col-md-6">
         <p>
           <%= @offer.description %>
-        </p>
+          <small class="offered-by">offered by </small>
          <%= link_to @offer.user.first_name, @offer.user, class: "btn btn-default" %>
-
+       </p>
          <% if current_user && (current_user.admin? || current_user.editor?) %>
           <p class="offer-edit">
             <%= link_to "Edit", edit_offer_path(@offer.id) %>
@@ -20,6 +20,17 @@
             <%= link_to "Delete", offer_path(@offer), method: "delete" %></p>
         <% end %>
 
+        <% if current_user && (current_user.id == @offer.user_id) %>
+          <p class="offer-edit">
+            <%= link_to "Edit", edit_offer_path(@offer.id), class: "btn btn-primary" %>
+          </p>
+        <% end %>
+
+        <% if current_user && (current_user.id == @offer.user_id) %>
+          <p class="offer-delete">
+            <%= button_to "Delete", offer_path(@offer), method: "delete", class: "btn btn-primary" %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>
