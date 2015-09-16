@@ -16,7 +16,7 @@ before_action :require_user, except: [:index]
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.image = "geo/#{rand(1..15)}.jpg"
+    @offer.image = "geo/#{rand(1..35)}.jpg"
     @offer.user_id = current_user.id if current_user
     # or: @offer = current_user.offers.new(offer_params)
     if @offer.save
