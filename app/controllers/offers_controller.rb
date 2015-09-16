@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
 before_action :require_user, except: [:index]
 # before_action :require_editor, only: [:edit] <-- was used with the role model
-before_action :require_admin, only: [:destroy]
+# before_action :require_admin, only: [:destroy]
   def index
     @offers = Offer.all
   end
