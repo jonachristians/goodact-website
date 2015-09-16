@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(signup_params)
-    @user.image = "maya/#{rand(1..15)}.jpg"
+    @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
       session[:user_id] = @user.id
       redirect_to '/' #does this work???
