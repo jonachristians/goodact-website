@@ -17,12 +17,18 @@ module ApplicationHelper
 
   def user_image_update
     User.all.each do |user|
-      user.update image: "maya/#{rand(1..15)}.jpg"
+      user.update image: "maya/#{rand(1..47)}.jpg"
+    end
+  end
+
+  def offer_image_update
+    Offer.all.each do |offer|
+      offer.update image: "geo/#{rand(1..35)}.jpg"
     end
   end
 
   def set_ran_user_image!(id)
     user = User.find(id)
-    user.update image: "maya/#{rand(1..15)}.jpg"
+    user.update image: "maya/#{rand(1..47)}.jpg"
   end
 end
