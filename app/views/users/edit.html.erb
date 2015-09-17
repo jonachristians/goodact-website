@@ -1,0 +1,8 @@
+<div class="container">
+
+  <%= form_for @user do |f| %>
+  <%= f.text_field :first_name, :placeholder => "First name" %>
+  <%= f.text_field :last_name, :placeholder => "Last name" %>
+  <%= f.submit "Update profile", class: "btn btn-submit" %>
+  <% end %>
+</div>
