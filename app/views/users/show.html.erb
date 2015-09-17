@@ -1,6 +1,7 @@
 
 <div class="container">
   <h1><%= @user.first_name%> <%= @user.last_name %></h1>
+  <%= link_to "Edit profile", edit_user_path(@user), class: "btn btn-primary" %>
   <div class="thumbnail">
     <%= image_tag @user.image %>
   </div>
