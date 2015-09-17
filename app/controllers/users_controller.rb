@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/' #does this work???
+      redirect_to @user
     else
       render 'new'
     end
