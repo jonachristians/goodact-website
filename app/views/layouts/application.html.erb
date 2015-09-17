@@ -42,6 +42,14 @@
   </nav>
 </div>
 
+<div class="container">
+  <% flash.each do |name, message| %>
+  <p>
+    <%= "#{message}" %>
+  </p>
+  <% end %>
+</div>
+
     <%= yield %>
 </body>
 </html>

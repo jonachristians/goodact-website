@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to @user, notice: "Welcome"
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       render 'edit'
     else
       render 'show'
-      #notice
+      #TODO notice
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if is_owner?
       if @user.update(update_params)
-        redirect_to @user
+        redirect_to @user, notice: "Your profile is saved"
       else
         render 'edit'
         #TODO notice
