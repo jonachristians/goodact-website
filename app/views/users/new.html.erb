@@ -1,4 +1,10 @@
-
+<% if @user.errors.any? %>
+  <% @user.errors.each do |attr, msg| %>
+    <p class="alert alert-danger">
+      <%= "#{attr.to_s.humanize}: #{msg.humanize}" %>
+    </p>
+  <% end %>
+<% end %>
 
 <div class="signup">
   <div class="container">

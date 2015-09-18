@@ -1,3 +1,11 @@
+<% if @offer.errors.any? %>
+  <% @offer.errors.each do |attr, msg| %>
+    <p class="alert alert-danger">
+      <%= "#{attr.to_s.humanize}: #{msg.humanize}" %>
+    </p>
+  <% end %>
+<% end %>
+
 <%= form_for (@offer) do |f| %>
 <%= f.text_area :description %>
 <%= f.submit "Post" %>

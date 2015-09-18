@@ -29,7 +29,7 @@
           <li><a href="#">Help</a></li>
           <li><%= link_to "User", users_path %></li>
           <% if current_user %>
-            <li><%= link_to current_user.first_name, current_user %></li>
+            <li class="user_profile_link"><%= link_to current_user.first_name, current_user %></li>
             <li><%= link_to "Log out", logout_path, method: "delete" %></li>
           <% else %>
             <li><%= link_to "Signup", 'signup' %></a></li>
@@ -44,11 +44,27 @@
 
 <div class="container">
   <% flash.each do |name, message| %>
-  <p>
-    <%= "#{message}" %>
-  </p>
+    <% case name %>
+      <% when "notice" %>
+        <p class="alert alert-info">
+          <%= "#{message}" %>
+        </p>
+      <% when "success" %>
+        <p class="alert alert-success">
+          <%= "#{message}" %>
+        </p>
+      <% when "warning" %>
+        <p class="alert alert-warning">
+          <%= "#{message}" %>
+        </p>
+      <% when "error" %>
+        <p class="alert alert-danger">
+          <%= "#{message}" %>
+        </p>
+    <% end %>
   <% end %>
 </div>
+
 
     <%= yield %>
 </body>
