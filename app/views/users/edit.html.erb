@@ -1,8 +1,18 @@
 <div class="container">
-
-  <%= form_for @user do |f| %>
-  <%= f.text_field :first_name, :placeholder => "First name" %>
-  <%= f.text_field :last_name, :placeholder => "Last name" %>
-  <%= f.submit "Update profile", class: "btn btn-submit" %>
-  <% end %>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <%= image_tag @user.image %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= form_for @user do |f| %>
+        <%= f.text_field :first_name, :placeholder => "First name" %>
+        <%= f.text_field :last_name, :placeholder => "Last name" %>
+        <%= f.submit "Update profile", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
