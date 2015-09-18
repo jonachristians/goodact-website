@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    redirect_to '/login' unless current_user
+    unless current_user
+      flash[:notice] = "You need to be logged in to visit that page."
+      redirect_to '/login'
+    end
   end
 
   def require_editor
