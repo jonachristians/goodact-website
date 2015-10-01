@@ -1,0 +1,24 @@
+<% if flash.any? %>
+<div class="container">
+  <% flash.each do |name, message| %>
+    <% case name %>
+      <% when "notice" %>
+        <p class="alert alert-info">
+          <%= "#{message}" %>
+        </p>
+      <% when "success" %>
+        <p class="alert alert-success">
+          <%= "#{message}" %>
+        </p>
+      <% when "warning" %>
+        <p class="alert alert-warning">
+          <%= "#{message}" %>
+        </p>
+      <% when "error" %>
+        <p class="alert alert-danger">
+          <%= "#{message}" %>
+        </p>
+    <% end %>
+  <% end %>
+</div>
+<% end %>

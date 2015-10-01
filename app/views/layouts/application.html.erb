@@ -12,7 +12,7 @@
 <body>
 <div class="header">
   <nav class="navbar navbar-transparent navbar-fixed-top">
-    <div class="container">
+
 
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,34 +38,13 @@
         </ul>
       </div>
 
-    </div>
+
   </nav>
 </div>
 
-<div class="container">
-  <% flash.each do |name, message| %>
-    <% case name %>
-      <% when "notice" %>
-        <p class="alert alert-info">
-          <%= "#{message}" %>
-        </p>
-      <% when "success" %>
-        <p class="alert alert-success">
-          <%= "#{message}" %>
-        </p>
-      <% when "warning" %>
-        <p class="alert alert-warning">
-          <%= "#{message}" %>
-        </p>
-      <% when "error" %>
-        <p class="alert alert-danger">
-          <%= "#{message}" %>
-        </p>
-    <% end %>
-  <% end %>
-</div>
-
+<%= render "shared/flash" %>
 
     <%= yield %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </body>
 </html>

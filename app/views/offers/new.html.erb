@@ -5,8 +5,9 @@
     </p>
   <% end %>
 <% end %>
-
-<%= form_for (@offer) do |f| %>
-<%= f.text_area :description %>
-<%= f.submit "Post" %>
-<% end %>
+<div class="container">
+  <%= form_for (@offer) do |f| %>
+  <%= f.text_area :description, size: "50x5" %>
+  <%= f.submit "Post" %>
+  <% end %>
+</div>

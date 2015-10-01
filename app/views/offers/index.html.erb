@@ -1,4 +1,7 @@
+<div class="jumbotron welcome-page">
 
+  <h1 class="jumbotron-header">GoodAct is the place to change</h1>
+</div>
 
 <div class="header">
   <div class="container">
@@ -13,20 +16,10 @@
     </div>
   </div>
 </div>
+
+
 <div class="container">
   <div class="row">
-    <% @offers.each do |offer| %>
-      <div class="col-md-3">
-        <%= link_to(offer) do %>
-          <div class="thumbnail offer">
-            <p><%= offer.description %></p>
-            <%= image_tag offer.image, class: "img-responsive", style: "max-height:165px", alt: "" %>
-            <p>
-              Offered by <%= offer.user.first_name%>
-            </p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render @offers %>
   </div>
 </div>
