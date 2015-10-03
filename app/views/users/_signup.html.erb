@@ -6,6 +6,17 @@
   <% end %>
 <% end %>
 
+<% if @user.errors.any? %>
+  <div class="error_messages">
+    <h2>Form is invalid</h2>
+    <ul>
+      <% for message in @user.errors.full_messages %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="signup">
   <div class="container">
     <div class="form-horizontal">
@@ -31,7 +42,7 @@
             <%= f.text_field :zipcode, placeholder: :zipcode, class: "form-control"  %>
           </div>
         </div>
-
+        
           <div class="form-group">
           <%= f.label :password, class: "col-md-2 label-control" %>
           <div class="col-md-10">
