@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'offers#index'
+  root 'pages#welcome'
   resources :users
   resources :offers
 
