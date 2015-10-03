@@ -6,16 +6,15 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      flash[:success] = "You successfully logged in."
-      redirect_to '/'
+      redirect_to '/', success: "You successfully logged in."
     else
-      redirect_to '/login'
+      render 'new', error: "You're e-mail and password don't match up."
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/', notice: "You are now logged out."
+    redirect_to '/', info: "You are now logged out."
   end
 
 end

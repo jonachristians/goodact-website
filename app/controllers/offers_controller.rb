@@ -20,8 +20,7 @@ before_action :require_user, except: [:index]
     @offer.user_id = current_user.id if current_user
     # or: @offer = current_user.offers.new(offer_params)
     if @offer.save
-      flash[:success] = "Successfully created offer."
-      redirect_to @offer
+      redirect_to @offer, success: "Successfully created offer."
     else
       render 'new'
     end
@@ -32,8 +31,7 @@ before_action :require_user, except: [:index]
     if is_owner?
       render 'edit'
     else
-      flash[:error] = "You are not the owner."
-      render 'show'
+      render 'show', danger: "You are not the owner."
     end
   end
 
@@ -41,8 +39,7 @@ before_action :require_user, except: [:index]
     @offer = Offer.find(params[:id])
     if is_owner?
       if @offer.update(offer_params)
-        flash[:success] = "Successfully updated your offer."
-        redirect_to @offer
+        redirect_to @offer, success: "Successfully updated your offer."
       else
         render 'edit'
       end
@@ -56,8 +53,7 @@ before_action :require_user, except: [:index]
     user = @offer.user
     if is_owner?
       @offer.destroy
-      flash[:success] = "Destroyed your offer"
-      redirect_to user
+      redirect_to user, success: "Destroyed your offer"
     else
       render 'show'
     end

@@ -17,8 +17,7 @@ class UsersController < ApplicationController
     @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Welcome on board"
-      redirect_to @user
+      redirect_to @user, success: "Welcome on board"
     else
       render 'new'
     end
@@ -37,8 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if is_owner?
       if @user.update(update_params)
-        flash[:success] = "Successfully updated your profile"
-        redirect_to @user
+        redirect_to @user, success: "Successfully updated your profile"
       else
         render 'edit'
       end
