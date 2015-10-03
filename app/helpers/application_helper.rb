@@ -31,4 +31,14 @@ module ApplicationHelper
     user = User.find(id)
     user.update image: "maya/#{rand(1..47)}.jpg"
   end
+
+  def set_usernames
+    User.all.each do |user|
+      tmp = user.first_name
+      user.username = tmp
+      user.zipcode = rand(10000..99999)
+      user.save
+    end
+  end
+
 end
