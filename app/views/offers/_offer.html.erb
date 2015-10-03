@@ -4,7 +4,7 @@
             <p><%= offer.description %></p>
             <%= image_tag offer.image, class: "img-responsive", style: "max-height:165px", alt: "" %>
             <p>
-              Offered by <%= offer.user.first_name%>
+              Offered by <%= offer.user.username%>
             </p>
           </div>
         <% end %>
