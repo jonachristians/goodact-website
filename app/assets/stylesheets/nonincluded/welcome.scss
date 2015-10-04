@@ -1,0 +1,18 @@
+.flash-messages {
+  position: fixed;
+  width: 100%;
+}
+
+.welcome-page {
+  background-image: image-url("maya/38");
+  background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 44em;
+}
+
+.jumbotron-header {
+  text-align: center;
+  position: relative;
+  top: 25%;
+}
