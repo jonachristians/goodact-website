@@ -12,7 +12,6 @@ module ApplicationHelper
       desc = gets.chomp
       o.update(description: desc)
     end
-
   end
 
   def user_image_update
@@ -27,7 +26,7 @@ module ApplicationHelper
     end
   end
 
-  def set_ran_user_image!(id)
+  def ran_user_image!(id)
     user = User.find(id)
     user.update image: "maya/#{rand(1..47)}.jpg"
   end
@@ -36,7 +35,7 @@ module ApplicationHelper
     User.all.each do |user|
       tmp = user.first_name
       user.username = tmp
-      user.zipcode = rand(10000..99999)
+      user.zipcode = rand(10_000..99_999)
       user.save
     end
   end

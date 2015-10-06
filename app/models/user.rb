@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :searches
   has_secure_password
-  # def editor?
+  # def editor? NOTE: role auth
   #  self.role == 'editor'
   # end
-  # def admin?
+  # def admin? NOTE: role auth
   #   self.role == 'admin'
   # end
 end

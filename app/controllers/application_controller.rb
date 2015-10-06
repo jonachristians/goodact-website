@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-          redirect_to '/login', info: "You must be logged in to visit that page."
+    redirect_to '/login', info: 'You must be logged in to visit that page.'
     end
   end
 
-  # def require_editor
+  # def require_editor NOTE: role auth
   #   redirect_to '/' unless current_user.editor?
   # end
-  # def require_admin
+  # def require_admin NOTE: role auth
   #  redirect_to '/' unless current_user.admin?
   # end
 

@@ -4,15 +4,15 @@
 }
 
 .welcome-page {
-  background-image: image-url("maya/38");
+  background-image: image-url('maya/38');
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 44em;
+  height: 44em;
 }
 
 .jumbotron-header {
-  text-align: center;
   position: relative;
+  text-align: center;
   top: 25%;
 }

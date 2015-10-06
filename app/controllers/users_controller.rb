@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, success: "Welcome on board"
+      redirect_to @user, success: 'Welcome on board'
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if is_owner?
+    if owner?
       render 'edit'
     else
       render 'show'
@@ -34,9 +34,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if is_owner?
+    if owner?
       if @user.update(update_params)
-        redirect_to @user, success: "Successfully updated your profile"
+        redirect_to @user, success: 'Successfully updated your profile'
       else
         render 'edit'
       end
@@ -48,19 +48,19 @@ class UsersController < ApplicationController
   def destroy
   end
 
-
-
-
   private
+
   def signup_params
-    params.require(:user).permit(:username, :email, :zipcode, :password, :password_confirmation)
+    params.require(:user).permit(
+      :username, :email, :zipcode, :password,
+      :password_confirmation)
   end
 
   def update_params
     params.require(:user).permit(:first_name, :last_name)
   end
 
-  def is_owner?
+  def owner?
     @user.id == current_user.id if current_user
   end
 
