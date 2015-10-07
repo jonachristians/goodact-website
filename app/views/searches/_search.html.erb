@@ -1,0 +1,11 @@
+<div class="col-md-3">
+        <%= link_to(search) do %>
+          <div class="thumbnail search">
+            <p><%= search.description %></p>
+            <%= image_tag search.image, style: "max-height:165px", alt: "" %>
+            <p>
+              Searched by <%= search.user.username%>
+            </p>
+          </div>
+        <% end %>
+</div>

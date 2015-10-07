@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <%= image_tag @search.image, class: "col-md-6 col-xs-12"%>
+      <div class="col-md-6">
+        <p>
+          <%= @search.description %>
+          <small class="searched-by">searched by </small>
+         <%= link_to @search.user.first_name, @search.user, class: "btn btn-default" %>
+       </p>
+
+        <% if owner? @search %>
+          <p class="search-edit">
+            <%= link_to "Edit", edit_search_path(@search.id), class: "btn btn-primary" %>
+          </p>
+          <p class="search-delete">
+            <%= button_to "Delete", search_path(@search), method: "delete", class: "btn btn-primary" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

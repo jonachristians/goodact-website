@@ -25,15 +25,16 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <h2>Offers</h2>
       <div class="row">
         <%= render @user.offers %>
       </div>
     </div>
-    <!-- <div class="col-md-6">
+    <div class="col-md-6">
       <h2>Searches</h2>
-      <% @user.searches.each do |search| %>
-      <p><%= search.description %> </p>
-      <%end%>
-    </div> -->
+      <div class="row">
+        <%= render @user.searches %>
+      </div>
+    </div>
   </div>
 </div>

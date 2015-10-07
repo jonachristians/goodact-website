@@ -1,0 +1,13 @@
+<% if @search.errors.any? %>
+  <% @search.errors.each do |attr, msg| %>
+    <p class="alert alert-danger">
+      <%= "#{attr.to_s.humanize}: #{msg.humanize}" %>
+    </p>
+  <% end %>
+<% end %>
+<div class="container">
+  <%= form_for (@search) do |f| %>
+  <%= f.text_area :description, size: "50x5" %>
+  <%= f.submit "Post" %>
+  <% end %>
+</div>
