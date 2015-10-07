@@ -1,3 +1,14 @@
 // Place all the styles related to the Searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search-heading {
+  color: grey;
+}
+
+.new-search-link {
+  margin: 20px auto;
+}
+
+.searched-by {
+  font-size: 60%;
+}

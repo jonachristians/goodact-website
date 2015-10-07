@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'pages#welcome'
   resources :users
   resources :offers
+  resources :searches
 
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
