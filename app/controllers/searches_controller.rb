@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
   def destroy
     @search = Search.find(params[:id])
     user = @search.user
-    if owner?
+    if owner? @search
       @search.destroy
       redirect_to user, success: 'Destroyed your search'
     else

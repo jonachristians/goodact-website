@@ -52,7 +52,7 @@ class OffersController < ApplicationController
   def destroy
     @offer = Offer.find(params[:id])
     user = @offer.user
-    if owner?
+    if owner? @offer
       @offer.destroy
       redirect_to user, success: 'Destroyed your offer'
     else
