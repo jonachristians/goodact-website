@@ -29,7 +29,7 @@ class OffersController < ApplicationController
 
   def edit
     @offer = Offer.find(params[:id])
-    if owner?
+    if owner? @offer
       render 'edit'
     else
       render 'show', danger: 'You are not the owner.'
@@ -38,7 +38,7 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find(params[:id])
-    if owner?
+    if owner? @offer
       if @offer.update(offer_params)
         redirect_to @offer, success: 'Successfully updated your offer.'
       else
@@ -64,10 +64,6 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:description)
-  end
-
-  def owner?
-    @offer.user_id == current_user.id if current_user
   end
 
 end

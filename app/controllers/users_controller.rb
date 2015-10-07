@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if owner?
+    if herself?
       render 'edit'
     else
       render 'show'
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if owner?
+    if herself?
       if @user.update(update_params)
         redirect_to @user, success: 'Successfully updated your profile'
       else
@@ -46,6 +46,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    if herself?
+      @user.destroy
+      session[:user_id] = nil
+      redirect_to root_path, success: 'We will miss you.'
+    else
+      render 'show', danger: "Error occured, are you the owner of this profile?"
+    end
   end
 
   private
@@ -58,10 +66,6 @@ class UsersController < ApplicationController
 
   def update_params
     params.require(:user).permit(:first_name, :last_name)
-  end
-
-  def owner?
-    @user.id == current_user.id if current_user
   end
 
 end

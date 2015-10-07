@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="jumbotron">
     <div class="row">
@@ -9,25 +8,11 @@
           <small class="offered-by">offered by </small>
          <%= link_to @offer.user.first_name, @offer.user, class: "btn btn-default" %>
        </p>
-         <% if current_user && (current_user.admin? || current_user.editor?) %>
-          <p class="offer-edit">
-            <%= link_to "Edit", edit_offer_path(@offer.id) %>
-          </p>
-        <% end %>
 
-        <% if current_user && current_user.admin? %>
-          <p class="offer-delete">
-            <%= link_to "Delete", offer_path(@offer), method: "delete", data: {confirm: "Are you sure?"} %></p>
-          
-        <% end %>
-
-        <% if current_user && (current_user.id == @offer.user_id) %>
+        <% if owner? @offer %>
           <p class="offer-edit">
             <%= link_to "Edit", edit_offer_path(@offer.id), class: "btn btn-primary" %>
           </p>
-        <% end %>
-
-        <% if current_user && (current_user.id == @offer.user_id) %>
           <p class="offer-delete">
             <%= button_to "Delete", offer_path(@offer), method: "delete", class: "btn btn-primary" %>
           </p>

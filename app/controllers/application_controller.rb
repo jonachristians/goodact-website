@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   add_flash_types :success, :warning, :danger, :info
-  helper_method :current_user
+  helper_method :current_user, :owner?, :herself?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -11,8 +11,16 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-    redirect_to '/login', info: 'You must be logged in to visit that page.'
+      redirect_to '/login', info: 'You must be logged in to visit that page.'
     end
+  end
+
+  def owner?(record)
+    record.user_id == current_user.id if current_user
+  end
+
+  def herself?
+    @user.id == current_user.id if current_user
   end
 
   # def require_editor NOTE: role auth

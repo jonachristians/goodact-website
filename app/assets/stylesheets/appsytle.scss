@@ -7,3 +7,12 @@
 body {
   padding-top: 50px;
 }
+
+
+@media (min-width:768px) {
+  .thumbnail.user a > img {
+    height: 165px;
+    size: cover;
+    width: auto;
+  }
+}
