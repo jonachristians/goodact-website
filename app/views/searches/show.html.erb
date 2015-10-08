@@ -14,7 +14,7 @@
             <%= link_to "Edit", edit_search_path(@search.id), class: "btn btn-primary" %>
           </p>
           <p class="search-delete">
-            <%= button_to "Delete", search_path(@search), method: "delete", class: "btn btn-primary" %>
+            <%= button_to "Delete", search_path(@search), method: "delete", data: {confirm: "Are you sure?"},  class: "btn btn-danger" %>
           </p>
         <% end %>
       </div>

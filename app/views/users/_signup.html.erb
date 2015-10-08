@@ -1,9 +1,11 @@
 <% if @user.errors.any? %>
-  <% @user.errors.each do |attr, msg| %>
-    <p class="signup-errors alert alert-danger">
-      <%= "#{attr.to_s.humanize}: #{msg.humanize}" %>
-    </p>
-  <% end %>
+  <div class="error-explanation">
+    <% @user.errors.each do |attr, msg| %>
+      <p class="signup-error alert alert-danger">
+        <%= "#{attr.to_s.humanize}: #{msg.humanize}" %>
+      </p>
+    <% end %>
+  </div>
 <% end %>
 
 <div class="signup-form">
@@ -14,7 +16,7 @@
         <div class="form-group">
           <%= f.label :username, class: "col-md-2 label-control" %>
           <div class="col-md-10">
-            <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+            <%= f.text_field :username, placeholder: "Username", class: "form-control", autofocus: true %>
           </div>
         </div>
 
