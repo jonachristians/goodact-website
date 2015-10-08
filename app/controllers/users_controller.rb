@@ -52,7 +52,7 @@ class UsersController < ApplicationController
       session[:user_id] = nil
       redirect_to root_path, success: 'We will miss you.'
     else
-      render 'show', danger: "Error occured, are you the owner of this profile?"
+      render 'show'
     end
   end
 

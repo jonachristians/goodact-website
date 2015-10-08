@@ -32,7 +32,7 @@ class OffersController < ApplicationController
     if owner? @offer
       render 'edit'
     else
-      render 'show', danger: 'You are not the owner.'
+      render 'show'
     end
   end
 

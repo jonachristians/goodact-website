@@ -30,7 +30,7 @@ class SearchesController < ApplicationController
     if owner? @search
       render 'edit'
     else
-      render 'show', danger: 'You are not the owner.'
+      render 'show'
     end
   end
 
