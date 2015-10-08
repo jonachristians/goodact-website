@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+before_action :already_logged_in, only: :new
   def new
   end
 
@@ -6,15 +7,24 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to '/', success: 'You successfully logged in.'
+      redirect_to session[:requested_url] || '/', success: 'You successfully logged in.'
     else
-      render 'new', error: "You're e-mail and password don't match up."
+      flash.now[:danger] = "You're e-mail and password don't match up."
+      render 'new'
     end
   end
 
   def destroy
     session[:user_id] = nil
+    session[:previous_url] = nil
     redirect_to '/', info: 'You are now logged out.'
   end
 
+  private
+
+  def already_logged_in
+    if current_user
+      redirect_to "/", info: "You are already logged in."
+    end
+  end
 end
