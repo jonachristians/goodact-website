@@ -1,15 +1,23 @@
 class UsersController < ApplicationController
   before_action :require_user, except: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
     @user = User.new
+  end
+
+  def edit
+    if herself?
+      render 'edit'
+    else
+      render 'show'
+    end
   end
 
   def create
@@ -23,17 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-    if herself?
-      render 'edit'
-    else
-      render 'show'
-    end
-  end
-
   def update
-    @user = User.find(params[:id])
     if herself?
       if @user.update(update_params)
         redirect_to @user, success: 'Successfully updated your profile'
@@ -46,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     if herself?
       @user.destroy
       session[:user_id] = nil
@@ -66,6 +63,10 @@ class UsersController < ApplicationController
 
   def update_params
     params.require(:user).permit(:first_name, :last_name)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

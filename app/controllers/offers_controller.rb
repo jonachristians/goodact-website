@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :require_user, except: [:index]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy]
   # before_action :require_editor, only: [:edit] NOTE: role auth
   # before_action :require_admin, only: [:destroy] NOTE: role auth
 
@@ -8,11 +9,18 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
   end
 
   def new
     @offer = Offer.new
+  end
+
+  def edit
+    if owner? @offer
+      render 'edit'
+    else
+      render 'show'
+    end
   end
 
   def create
@@ -27,17 +35,7 @@ class OffersController < ApplicationController
     end
   end
 
-  def edit
-    @offer = Offer.find(params[:id])
-    if owner? @offer
-      render 'edit'
-    else
-      render 'show'
-    end
-  end
-
   def update
-    @offer = Offer.find(params[:id])
     if owner? @offer
       if @offer.update(offer_params)
         redirect_to @offer, success: 'Successfully updated your offer.'
@@ -50,7 +48,6 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @offer = Offer.find(params[:id])
     user = @offer.user
     if owner? @offer
       @offer.destroy
@@ -64,6 +61,10 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:description)
+  end
+
+  def set_offer
+    @offer = Offer.find(params[:id])
   end
 
 end

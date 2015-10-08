@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   # def admin? NOTE: role auth
   #   self.role == 'admin'
   # end
+
+  def to_s
+    username
+  end
 end

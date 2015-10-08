@@ -1,16 +1,24 @@
 class SearchesController < ApplicationController
   before_action :require_user, except: [:index]
+  before_action :set_search, only: [:show, :edit, :update, :destroy]
 
   def index
     @searches = Search.all
   end
 
   def show
-    @search = Search.find(params[:id])
   end
 
   def new
     @search = Search.new
+  end
+
+  def edit
+    if owner? @search
+      render 'edit'
+    else
+      render 'show'
+    end
   end
 
   def create
@@ -25,17 +33,8 @@ class SearchesController < ApplicationController
     end
   end
 
-  def edit
-    @search = Search.find(params[:id])
-    if owner? @search
-      render 'edit'
-    else
-      render 'show'
-    end
-  end
 
   def update
-    @search = Search.find(params[:id])
     if owner? @search
       if @search.update(offer_params)
         redirect_to @search, success: 'Successfully updated your search.'
@@ -48,7 +47,6 @@ class SearchesController < ApplicationController
   end
 
   def destroy
-    @search = Search.find(params[:id])
     user = @search.user
     if owner? @search
       @search.destroy
@@ -62,6 +60,10 @@ class SearchesController < ApplicationController
 
   def offer_params
     params.require(:search).permit(:description)
+  end
+
+  def set_search
+    @search = Search.find(params[:id])
   end
 
 end
