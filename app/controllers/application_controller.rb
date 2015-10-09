@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # before_action :see_request
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -32,5 +33,8 @@ class ApplicationController < ActionController::Base
   #  redirect_to '/' unless current_user.admin?
   # end
 
+  # def see_request
+  #   logger.info request.env
+  # end
 
 end
