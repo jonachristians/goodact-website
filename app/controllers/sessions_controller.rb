@@ -16,7 +16,7 @@ before_action :already_logged_in, only: :new
 
   def destroy
     session[:user_id] = nil
-    session[:previous_url] = nil
+    session[:requested_url] = nil
     redirect_to '/', info: 'You are now logged out.'
   end
 
