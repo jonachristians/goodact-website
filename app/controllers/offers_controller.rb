@@ -27,7 +27,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     @offer.image = "geo/#{rand(1..35)}.jpg"
     @offer.user_id = current_user.id if current_user
-    # or: @offer = current_user.offers.new(offer_params)
+    # FIXME: or: @offer = current_user.offers.new(offer_params)
     if @offer.save
       redirect_to @offer, success: 'Successfully created offer.'
     else

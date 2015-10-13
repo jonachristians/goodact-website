@@ -22,7 +22,7 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.new(offer_params)
+    @search = Search.new(search_params)
     @search.image = "geo/#{rand(1..35)}.jpg" # TODO: use diffrent images
     @search.user_id = current_user.id if current_user
     # FIXME: or: @search = current_user.searches.new(offer_params)?
@@ -36,7 +36,7 @@ class SearchesController < ApplicationController
 
   def update
     if owner? @search
-      if @search.update(offer_params)
+      if @search.update(search_params)
         redirect_to @search, success: 'Successfully updated your search.'
       else
         render 'edit'
@@ -58,7 +58,7 @@ class SearchesController < ApplicationController
 
   private
 
-  def offer_params
+  def search_params
     params.require(:search).permit(:description)
   end
 
