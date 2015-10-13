@@ -6,7 +6,7 @@
         <%= link_to(user) do %>
             <div class="thumbnail user">
             <p><%= user.username %>  </p>
-            <%= image_tag user.image %>
+            <%= image_tag user.image, alt: "Image for user##{user.id}" %>
           <% end %>
         </div>
       </div>
