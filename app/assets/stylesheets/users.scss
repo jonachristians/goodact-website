@@ -2,23 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.signup-form {
+  margin-top: 10px;
+}
+
+.signup-error.alert {
+  margin-bottom: 0;
+}
+
+// Used in users#index view
+@media (min-width:768px) {
+  .thumbnail.user a > img {
+    height: 165px;
+    size: cover;
+    width: auto;
+  }
+}
+
+// Used in users#show
 .offers-link {
   float: left;
 }
 
 .searches-link {
   float: right;
-}
-
-.navbar {
-  border-bottom: grey solid 1px;
-  background-color: white;
-}
-
-.navbar-transparent .navbar-toggle .icon-bar {
-    background-color: grey;
-}
-
-.signup-form {
-  margin-top: 10px;
 }
