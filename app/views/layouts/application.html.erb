@@ -37,7 +37,7 @@
           <% if current_user %>
             <li><%= link_to "User", users_path %></li>
             <li class="user_profile_link"><%= link_to current_user.username, current_user %></li>
-            <li ><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <li><%= button_to "Log out", logout_path, method: "delete", class: "btn btn-primary" %></li>
           <% else %>
             <li><%= link_to "Login", 'login' %></a></li>
             <li><%= link_to "Signup", 'signup' %></a></li>
