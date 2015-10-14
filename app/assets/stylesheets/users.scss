@@ -10,6 +10,10 @@
   margin-bottom: 0;
 }
 
+.field_with_errors input {
+  background-color: #F2DEDE;
+}
+
 // Used in users#index view
 @media (min-width:768px) {
   .thumbnail.user a > img {
