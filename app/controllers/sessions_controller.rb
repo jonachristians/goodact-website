@@ -7,7 +7,7 @@ before_action :already_logged_in, only: :new
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to session[:requested_url] || '/', success: 'You successfully logged in.'
+      redirect_to session[:requested_url] || @user, success: 'You successfully logged in.'
     else
       flash.now[:danger] = "You're e-mail and password don't match up."
       render 'new'
