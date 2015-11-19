@@ -56,6 +56,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.5.2)
+    fake_person (1.0.3)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -156,6 +157,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   coffee-rails (~> 4.1.0)
+  fake_person
   jbuilder (~> 2.0)
   jquery-rails
   pg
