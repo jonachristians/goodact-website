@@ -15,5 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
-GLogo
-rails_best_practices_output.html
+rails_best_practices_output*
+/doc
