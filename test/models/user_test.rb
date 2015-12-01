@@ -95,4 +95,8 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "fdsa"
     assert_not @user.valid?
   end
+
+  test "authenticated? method should return false if remember_digest is nil" do
+    assert_not @user.authenticated?("")
+  end
 end

@@ -7,6 +7,7 @@ before_action :already_logged_in, only: :new
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
+      remember user if params[:session][:remember_me] == '1'
       redirect_to requested_url || user, success: 'You successfully logged in.'
     else
       flash.now[:danger] = "You're e-mail and password don't match up."
@@ -15,7 +16,10 @@ before_action :already_logged_in, only: :new
   end
 
   def destroy
-    log_out
+    if logged_in?
+      forget current_user
+      log_out
+    end
     redirect_to root_path, info: 'You are now logged out.'
   end
 
