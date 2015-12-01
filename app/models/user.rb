@@ -1,7 +1,21 @@
 class User < ActiveRecord::Base
-  validates_presence_of :username, :email, :zipcode
-  validates_uniqueness_of :username
-  validates_length_of :zipcode, is: 5
+  before_save {self.email.downcase}
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+  validates :username,
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 30 }
+  validates :email,
+            presence: true,
+            uniqueness: { case_sensitive: false },
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX}
+  validates :zipcode,
+            presence: true,
+            numericality: true,
+            length: { is: 5 }
   has_many :offers
   has_many :searches
   has_secure_password
