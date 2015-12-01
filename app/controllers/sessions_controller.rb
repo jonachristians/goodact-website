@@ -1,15 +1,14 @@
 class SessionsController < ApplicationController
 before_action :already_logged_in, only: :new
   def new
+    flash.keep(:requested_url)
   end
 
   def create
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      req_url = session[:requested_url]
-      session[:requested_url] = nil
-      redirect_to req_url || @user, success: 'You successfully logged in.'
+      redirect_to flash[:requested_url] || @user, success: 'You successfully logged in.'
     else
       flash.now[:danger] = "You're e-mail and password don't match up."
       render 'new'
