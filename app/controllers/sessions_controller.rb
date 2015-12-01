@@ -7,9 +7,7 @@ before_action :already_logged_in, only: :new
     @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      req_url = session[:requested_url]
-      session[:requested_url] = nil
-      redirect_to req_url || @user, success: 'You successfully logged in.'
+      redirect_to requested_url || @user, success: 'You successfully logged in.'
     else
       flash.now[:danger] = "You're e-mail and password don't match up."
       render 'new'
@@ -18,8 +16,7 @@ before_action :already_logged_in, only: :new
 
   def destroy
     session[:user_id] = nil
-    session[:requested_url] = nil
-    redirect_to '/', info: 'You are now logged out.'
+    redirect_to root_path, info: 'You are now logged out.'
   end
 
   private
@@ -28,5 +25,9 @@ before_action :already_logged_in, only: :new
     if current_user
       redirect_to "/", info: "You are already logged in."
     end
+  end
+
+  def requested_url
+    session.delete(:requested_url)
   end
 end
