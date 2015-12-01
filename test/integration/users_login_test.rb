@@ -22,6 +22,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
+    assert flash.any?
     assert_select "a[href=?]", login_path, false
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", user_path(@user)
@@ -29,6 +30,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_not is_logged_in?
     assert_redirected_to root_path
     follow_redirect!
+    assert flash.any?
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path, false
     assert_select "a[href=?]", user_path(@user), false
