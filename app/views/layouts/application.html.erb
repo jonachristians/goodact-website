@@ -49,7 +49,7 @@
 
   </nav>
 
-  <%= render "shared/flash" %>
+  <%= render "shared/flash" if flash.any?%>
 
   <%= yield %>
 
