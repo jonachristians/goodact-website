@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RememberRequestedUrlTest < ActionDispatch::IntegrationTest
+class UsersRememberRequestedUrlTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:asd)
