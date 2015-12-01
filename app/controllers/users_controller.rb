@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(signup_params)
     @user.image = "maya/#{rand(1..47)}.jpg"
     if @user.save
-      session[:user_id] = @user.id
+      log_in @user
       redirect_to @user, success: 'Welcome on board'
     else
       render 'new'
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def destroy
     if herself?
       @user.destroy
-      session[:user_id] = nil
+      log_out
       redirect_to root_path, success: 'We will miss you.'
     else
       render 'show'
