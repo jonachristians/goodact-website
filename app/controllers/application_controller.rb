@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
   # before_action :see_request
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   add_flash_types :success, :warning, :danger, :info
 
-  helper_method :current_user, :owner?, :herself?
+  helper_method :current_user, :owner?, :herself?, :logged_in?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -24,6 +25,19 @@ class ApplicationController < ActionController::Base
 
   def herself?
     @user.id == current_user.id if current_user
+  end
+
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
+
+  def logged_in?
+    !current_user.nil?
   end
 
   # def require_editor NOTE: role auth
