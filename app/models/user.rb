@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
             presence: true,
             numericality: true,
             length: { is: 5 }
+  validates :password,
+            presence: true            
   has_many :offers
   has_many :searches
   has_secure_password
