@@ -1,11 +1,9 @@
-<% flash.each do |name, message| %>
-  <% case name %>
-    <% when "requested_url" %>
-    <% else %>
-      <div class="flash-messages">
-          <div class="alert alert-<%= name %>">
-            <%= message %>
-          </div>
+<% if flash.any? %>
+  <div class="flash-messages">
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %>">
+        <%= message %>
       </div>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-      flash[:requested_url] = request.fullpath
+      session[:requested_url] = request.fullpath
       redirect_to '/login', info: 'You must be logged in to visit that page.'
     end
   end
