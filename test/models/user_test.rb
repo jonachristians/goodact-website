@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  # in order to see why user is not valid:
+    # @user.errors.full_messages.each do |msg|
+    #   puts msg
+    # end
+  # use in an test you like
   def setup
     @user = User.new(username: "example_user", email: "test@example.com",
                     zipcode: 12345,
@@ -83,9 +88,6 @@ class UserTest < ActiveSupport::TestCase
   test "password should not be blank" do
     @user.password = @user.password_confirmation = "       "
     assert_not @user.valid?
-    @user.errors.full_messages.each do |msg|
-      puts msg
-    end
   end
 
   test "password confirmation should match" do
