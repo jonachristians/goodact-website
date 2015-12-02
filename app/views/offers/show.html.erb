@@ -6,7 +6,7 @@
         <p>
           <%= @offer.description %>
           <small class="offered-by">offered by </small>
-         <%= link_to @offer.user.first_name, @offer.user, class: "btn btn-default" %>
+         <%= link_to @offer.user.first_name || @offer.user.username, @offer.user, class: "btn btn-default" %>
        </p>
 
         <% if owner? @offer %>

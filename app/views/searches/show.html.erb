@@ -6,7 +6,7 @@
         <p>
           <%= @search.description %>
           <small class="searched-by">searched by </small>
-         <%= link_to @search.user.first_name, @search.user, class: "btn btn-default" %>
+         <%= link_to @search.user.first_name || @search.user.username, @search.user, class: "btn btn-default" %>
        </p>
 
         <% if owner? @search %>
