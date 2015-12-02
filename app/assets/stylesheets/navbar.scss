@@ -13,3 +13,16 @@
 .navbar .navbar-collapse {
   margin-right: 1rem;
 }
+
+.navbar li a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar li.signup a {
+  margin: 4px;
+  padding: 5px 15px;
+  color: #00AB6B;
+  border-color: #00AB6B;
+  border-radius: 2em;
+  line-height: 30px;
+}
