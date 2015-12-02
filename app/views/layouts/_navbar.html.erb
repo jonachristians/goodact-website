@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if logged_in? %>
-          <li><%= link_to "User", users_path %></li>
+          <li><%= link_to "Users", users_path %></li>
           <li class="user_profile_link"><%= link_to "Account", current_user %></li>
           <li ><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
