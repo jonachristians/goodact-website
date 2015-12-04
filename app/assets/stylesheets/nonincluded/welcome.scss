@@ -1,0 +1,29 @@
+.flash-messages {
+  position: absolute;
+  width: 100%;
+}
+
+.welcome-header {
+  background-color: rgba(255, 245, 92, 0.12);
+  background-image: image-url('maya/38');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin-top: -50px;
+}
+
+.stage {
+  padding-top: 32vh;
+
+  h1 {
+    text-align: center;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .stage h1 {
+    font-size: 63px;
+  }
+}

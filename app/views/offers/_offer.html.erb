@@ -1,0 +1,8 @@
+<div class="col-md-3">
+        <%= link_to(offer) do %>
+          <div class="thumbnail offer">
+            <p><%= offer.description %></p>
+            <%= image_tag offer.image, style: "max-height:165px", alt: "Image for offer##{offer.id}" %>
+          </div>
+        <% end %>
+</div>

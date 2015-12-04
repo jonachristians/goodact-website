@@ -1,15 +1,1 @@
-<div class="container">
-  <ul class="nav nav-tabs">
-    <li><%= link_to "Home", root_path %></li>
-    <li class="active"> <%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
-
-<div class="container">
-  <%= form_for (@user) do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit "Join", class: "btn btn-default  " %>
-  <% end %>
-</div>
+<%= render "signup" %>

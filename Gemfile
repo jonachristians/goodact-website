@@ -25,9 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 ruby "2.2.2"
 
-gem 'rails_12factor'
+gem 'fake_person'
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -44,7 +45,17 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'guard' # this is necessary in newer versions
+  gem 'guard-minitest'
+  gem 'guard-livereload'
 end
+
+group :test do
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+end
+
 group :production do
    gem 'thin'
+   gem 'rails_12factor'
  end

@@ -1,20 +1,22 @@
 <div class="container">
-  <ul class="nav nav-tabs">
-    <li class=""><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Sign up", new_user_path%></li>
-    <li><a href="#">Log In</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</div>
-<div class="jumbotron">
-  <div class="container">
+  <div class="jumbotron">
     <div class="row">
       <%= image_tag @offer.image, class: "col-md-6 col-xs-12"%>
       <div class="col-md-6">
         <p>
           <%= @offer.description %>
-        </p>
-         <%= link_to @offer.user.name, @offer.user, class: "btn btn-primary" %>
+          <small class="offered-by">offered by </small>
+         <%= link_to @offer.user.first_name || @offer.user.username, @offer.user, class: "btn btn-default" %>
+       </p>
+
+        <% if owner? @offer %>
+          <p class="offer-edit">
+            <%= link_to "Edit", edit_offer_path(@offer.id), class: "btn btn-primary" %>
+          </p>
+          <p class="offer-delete">
+            <%= button_to "Delete", offer_path(@offer), method: "delete", data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+          </p>
+        <% end %>
       </div>
     </div>
   </div>
