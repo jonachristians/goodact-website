@@ -1,8 +1,7 @@
 <div class="col-md-3">
         <%= link_to(search) do %>
-          <div class="thumbnail search">
+          <div class="thumbnail search" style="background-image: url(<%= asset_path(search.image) %>)">
             <p><%= search.description %></p>
-            <%= image_tag search.image, style: "max-height:165px", alt: "Image for search##{search.id}" %>
           </div>
         <% end %>
 </div>

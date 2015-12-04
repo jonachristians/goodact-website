@@ -1,8 +1,7 @@
 <div class="col-md-3">
         <%= link_to(offer) do %>
-          <div class="thumbnail offer">
+          <div class="thumbnail offer" style="background-image: url(<%= asset_path(offer.image) %>)">
             <p><%= offer.description %></p>
-            <%= image_tag offer.image, style: "max-height:165px", alt: "Image for offer##{offer.id}" %>
           </div>
         <% end %>
 </div>
